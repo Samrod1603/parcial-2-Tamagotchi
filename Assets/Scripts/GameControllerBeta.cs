@@ -20,6 +20,7 @@ public class GameControllerBeta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //interfaz
         happiness -= 6.4f * Time.deltaTime;
         if (happiness < 0)
         {
@@ -40,6 +41,8 @@ public class GameControllerBeta : MonoBehaviour
         {
             hunger = 0;
         }
+        
+        //Observer
 
         if (hunger <= 50)
         {
@@ -88,6 +91,8 @@ public class GameControllerBeta : MonoBehaviour
         {
             playNoti.color = new Color(1, 1, 1, 0);
         }
+        
+        //Estado
 
         if (hunger <= 0 && happiness <= 0 && sleep <= 0)
         {
@@ -151,19 +156,20 @@ public class GameControllerBeta : MonoBehaviour
         hungerButton.SetActive(false);
         playButton.SetActive(false);
         sleepButton.SetActive(false);
+        
         sleepState.SetActive(true);
         
         for (int i = (int)sleep; i < sleep + 20; i++)
         {
             
-            sleep += 120f * Time.deltaTime;
+            sleep += 0.5f;
             if (sleep >= max)
             {
                 sleep = 100;
                 break;
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.01f);
         }
         
         hungerButton.SetActive(true);
